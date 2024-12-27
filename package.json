@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.ts",
   "engines": {
-    "node": "14.x"
+    "node": "22.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts localhost 5000"
+    "build": "tsc",
+    "start": "nodemon dist/server.js localhost 5000"
   },
   "keywords": [],
   "author": "",
