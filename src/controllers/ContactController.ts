@@ -5,7 +5,7 @@ import User from "../models/User";
 import { getToken } from "../helpers/get-token";
 import getUserByToken from "../helpers/get-user-by-token";
 import { Tuser } from "../types/Types";
-import Document from "next/document";
+//import Document from "next/document";
 const ObjectId = require("mongoose").Types.ObjectId;
 
 class ContactController {
