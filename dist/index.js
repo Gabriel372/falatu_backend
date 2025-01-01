@@ -26,7 +26,7 @@ app.use(express_1.default.json());
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 const allowedOrigins = [
     "http://localhost:3000",
-    "https://falatu-frontend-4jl9sb4lq-gabriel-de-souza-brandaos-projects.vercel.app/",
+    "https://falatu-frontend-4jl9sb4lq-gabriel-de-souza-brandaos-projects.vercel.app",
 ];
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {
