@@ -18,7 +18,22 @@ const io = require("socket.io")(server, {
 });
 (0, socketHandlers_1.default)(io);
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+const allowedOrigins = [
+    "http://localhost:3000",
+    "https://falatu-frontend.vercel.app",
+];
+app.use((0, cors_1.default)({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
+}));
 // const TaskRoutes = require("./routes/TaskRoutes");
 // app.use("/tasks", TaskRoutes);
 app.use("/users", UserRoutes_1.default);
