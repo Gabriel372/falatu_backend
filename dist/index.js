@@ -24,5 +24,5 @@ app.use((0, cors_1.default)({ credentials: true, origin: "http://localhost:3000"
 app.use("/users", UserRoutes_1.default);
 app.use("/contacts", ContactRoutes_1.default);
 app.use("/messages", MessageRoutes_1.default);
-server.listen(5000, () => console.log("Server running..."));
+server.listen(5000, () => console.log("Server running in http://localhost:5000/"));
 // app.listen(5000);

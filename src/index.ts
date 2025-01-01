@@ -15,12 +15,30 @@ const io = require("socket.io")(server, {
 });
 setupSocketHandlers(io);
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://falatu-frontend.vercel.app",
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 // const TaskRoutes = require("./routes/TaskRoutes");
 // app.use("/tasks", TaskRoutes);
 app.use("/users", UserRoutes);
 app.use("/contacts", ContactRoutes);
 app.use("/messages", MessageRoutes);
 
-server.listen(5000, () => console.log("Server running..."));
+server.listen(5000, () =>
+  console.log("Server running in http://localhost:5000/")
+);
 // app.listen(5000);
