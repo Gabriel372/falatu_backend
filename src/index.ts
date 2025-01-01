@@ -11,14 +11,19 @@ const port = process.env.PORT || 3001;
 const app: Express = express();
 const server = http.createServer(app);
 const io = require("socket.io")(server, {
-  cors: { origin: "http://localhost:3000" },
+  cors: {
+    origin: [
+      "http://localhost:3000",
+      "https://falatu-frontend-4jl9sb4lq-gabriel-de-souza-brandaos-projects.vercel.app/",
+    ],
+  },
 });
 setupSocketHandlers(io);
 app.use(express.json());
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://falatu-frontend.vercel.app",
+  "https://falatu-frontend-4jl9sb4lq-gabriel-de-souza-brandaos-projects.vercel.app/",
 ];
 app.use(
   cors({
